@@ -34,8 +34,8 @@ export async function connect(roomName: string, options: any = {}) {
         ? "ws://127.0.0.1:2567" // local environment
         : "wss://hept-j.colyseus.dev"; // production environment
 */
-    const ENDPOINT = "ws://127.0.0.1:2567"
-    //const ENDPOINT = "wss://lucidreamserver.onrender.com";
+    //const ENDPOINT = "ws://127.0.0.1:2567"
+    const ENDPOINT = "wss://lucidreamserver.onrender.com";
     
 
     if (isPreview) { addConnectionDebugger(ENDPOINT); }
