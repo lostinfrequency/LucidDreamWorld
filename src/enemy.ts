@@ -112,7 +112,7 @@ function enemyKiller() {
       if (enemyTransform) {
         const soundEntity = engine.addEntity()
         Transform.create(soundEntity).position = enemyTransform.position
-        //playSound(soundEntity, 'sounds/explosion.mp3', true)
+        playSound('sounds/explosion.mp3')
       }
       const folderNumber = "2"
       setup360(folderNumber)

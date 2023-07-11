@@ -1,4 +1,4 @@
-import { Entity, engine, Transform, MeshRenderer, Material, GltfContainer } from '@dcl/sdk/ecs'
+import { Entity, engine, Transform, MeshRenderer, Material, GltfContainer, AudioSource } from '@dcl/sdk/ecs'
 import { Vector3, Quaternion } from '@dcl/sdk/math'
 import { height, sceneSizeX, sceneSizeZ, radiusMultiplier } from './resources'
 
@@ -30,6 +30,11 @@ export const setup360 = (folderNumber: string): Entity => {
         src: 'models/cloudFloor.glb',
       })
       Transform.create(cloudFloor, { position: Vector3.create(48, 48, 48) })
+      const audioSourceEntity = engine.addEntity()
+      AudioSource.createOrReplace(audioSourceEntity, {
+        audioClipUrl: 'sounds/ambient.mp3',
+        playing: true
+      })
     break
     default:
     break

@@ -3,13 +3,13 @@
 	"runtimeVersion": "7",
 	"display": {
 		"title": "Lucid Dream",
-		"description": "Lucid Dream scene",
+		"description": "Lucid Dream world featuring AI generated Skybox and AI chatbots. SPOILER ALERT! Player spawns in a house where he can got to sleep by clicking on bed, after that the dream starts, initially player is forced to escape the initial nightmare by finding a weapon, equiping it and the using the weapon player must defeat the nightmare ghost, when the ghost is killed a cloud spawns in its place and player can travel upwards by jumping on the new clouds that are being spawned as the player jumps forward to reach enlightened being at the end that can answer every player question that is typed in the question form.",
 		"navmapThumbnail": "images/scene-thumbnail.png",
 		"favicon": "favicon_asset"
 	},
-	"owner": "",
+	"owner": "Frequency",
 	"contact": {
-		"name": "SDK",
+		"name": "Frequency",
 		"email": ""
 	},
 	"main": "bin/index.js",
