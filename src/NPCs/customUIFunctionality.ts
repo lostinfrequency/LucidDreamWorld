@@ -1,0 +1,40 @@
+import { REGISTRY } from "../registry"
+import { closeAllInteractions, createMessageObject, sendMsgToAI } from "../utils/connectedUtils"
+import { closeCustomUI, resetInputField } from "./customUi"
+import * as serverStateSpec from '../connection/state/server-state-spec'
+import { GAME_STATE } from "../state"
+import { initArena } from "../lobby-scene/lobbyScene"
+
+export class NpcQuestionData {
+  displayText: string
+  aiQuery: string
+}
+
+export const genericPrefinedQuestions: NpcQuestionData[] = [
+  { displayText: "Tell me a joke!", aiQuery: "Tell me a joke!" },
+  { displayText: "What can I do here?", aiQuery: "What can I do here?" },
+]
+
+export function sendQuestion(questionData: NpcQuestionData | string) {
+  const messageQuery = (typeof (questionData) === 'string') ? questionData : questionData.aiQuery
+  const message = (typeof (questionData) === 'string') ? questionData : questionData.aiQuery
+  console.log("QUESTIONS", "sending ", message)
+
+  closeAllInteractions({ exclude: REGISTRY.activeNPC })
+
+  const doSend = () => {
+    const chatMessage: serverStateSpec.ChatMessage = createMessageObject(messageQuery, undefined, GAME_STATE.gameRoom)
+    sendMsgToAI(chatMessage)
+  }
+  if (GAME_STATE.gameRoom && GAME_STATE.gameConnected === 'connected') {
+    doSend()
+  } else {
+    REGISTRY.lobbyScene.pendingConvoActionWithNPC = doSend
+    initArena(REGISTRY.lobbyScene, false)
+    return
+  }
+
+  closeCustomUI(false)
+
+  resetInputField()//TODO: missing implementation
+}
